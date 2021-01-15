@@ -4,23 +4,23 @@ platform :android do
 
     desc "Lane for distributing app using Firebase App Distributions"
     lane :distribute do
-        gradle(task: 'clean', project_dir: './android/)
-		gradle(task: 'bundle', build_type: 'Debug', project_dir: './android/')
+        gradle(task: "clean", project_dir: "./android/)
+		gradle(task: "bundle", build_type: "Debug", project_dir: "./android/")
         firebase_app_distribution(
             service_credentials_file: firebase_credentials.json,
-            app: ENV['FIREBASE_APP_ID'],
+            app: ENV["FIREBASE_APP_ID"],
         )
     end
 
     desc "Deploy a beta version to the Google Play"
     lane :beta do
         gradle(task: "clean bundleRelease", )
-        upload_to_play_store(track: 'beta', release_status: 'draft')
+        upload_to_play_store(track: "beta", release_status: "draft")
     end
 
     desc "Deploy a new version to the Google Play"
     lane :production do
         gradle(task: "clean bundleRelease")
-        upload_to_play_store(release_status: 'draft')
+        upload_to_play_store(release_status: "draft")
     end
 end
