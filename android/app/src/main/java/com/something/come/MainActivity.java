@@ -1,4 +1,4 @@
-package com.rnstarter;
+package com.something.come;
 
 import com.facebook.react.ReactActivity;
 
