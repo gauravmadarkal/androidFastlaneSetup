@@ -4,9 +4,9 @@ platform :android do
 
     desc "Lane for distributing app using Firebase App Distributions"
     lane :distribute do
-        gradle(task: "clean assembleRelease")
+        gradle(task: "clean assembleDebug")
         firebase_app_distribution(
-            service_credentials_file: ENV['PLAY_CONFIG_JSON'],
+            service_credentials_file: firebase_credentials.json,
             app: ENV['FIREBASE_APP_ID'],
         )
     end
